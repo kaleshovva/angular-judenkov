@@ -6,22 +6,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Для Веры!!!
+Чтобы запустить фронтенд на своем ноуте, тебе нужно:
+1) Скачать с https://nodejs.org/en/ LTS версию NodeJS и установить. Затем перезапустить комп
+2) Скачать отсюда сам проект. Надеюсь с этим проблем не будет
+3) Открыть папку со скачанным проектом через VSCode
+4) В терминале vscode вызвать команду `npm install`
+5) После окончания установки в том же терминале вызвать команду `npm start`
+6) Когда все запустится, можешь в браузере переходить по ссылке http://localhost:4200/
+7) Если что-то не запустится, ты знаешь, куда стучаться)))
