@@ -61,18 +61,6 @@ export class TutorialsListComponent implements OnInit {
     this.currentIndex = index;
   }
 
-  removeAllTutorials(): void {
-    this.tutorialService.deleteAll()
-      .subscribe(
-        response => {
-          console.log(response);
-          this.retrieveTutorials();
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
   searchTitle(): void {
     this.tutorialService.findByTitle(this.title)
       .subscribe(

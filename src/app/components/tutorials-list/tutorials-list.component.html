@@ -1,40 +1,38 @@
-<div class="list_row">
-    <div class="col-md-8">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
-            <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" (click)="searchTitle()" style="font-size: 20px; font-size: 20px; font-family: 'Times New Roman', Times, serif;">
-            Search
-          </button>
+<div class="all">
+
+    <div class="container">
+        <div class="search__inner">
+            <input type="text" class="search__title" placeholder="Search by title" [(ngModel)]="title" />
+            <div class="button_search">
+                <button class="button__search" type="button" (click)="searchTitle()">
+                Search
+              </button>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <h4>Tutorials List</h4>
-        <ul class="list-group">
+
+    <div class="list">
+        <h4>List of cars</h4>
+        <ul class="list__group">
             <li class="list-group-item" *ngFor="let tutorial of tutorials; let i = index" [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
                 {{ tutorial.data.title }}
             </li>
         </ul>
-
-        <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()" style="font-size: 20px; font-family: 'Times New Roman', Times, serif;">
-        Remove All
-      </button>
     </div>
-    <div class=" col-md-6 ">
+    <div class="inf__cars">
         <div *ngIf="currentTutorial ">
-            <h4>Tutorial</h4>
-            <div>
-                <label><strong>Title:</strong></label> {{ currentTutorial.data.title }}
+            <h4>Information about the car</h4>
+            <div class="item">
+                <label><strong>Brand:</strong></label> {{ currentTutorial.data.title }}
             </div>
-            <div>
-                <label><strong>Description:</strong></label> {{ currentTutorial.data.description }}
+            <div class="item">
+                <label><strong>Model:</strong></label> {{ currentTutorial.data.description }}
             </div>
-            <div>
-                <label><strong>Status:</strong></label> {{ currentTutorial.published ? "Published " : "Pending " }}
+            <div class="item">
+                <label><strong>Year:</strong></label> {{ currentTutorial.published ? "Published " : "Pending " }}
             </div>
 
-            <a class="badge badge-warning " routerLink="/tutorials/{{ currentTutorial.id }} ">
+            <a class="batton" routerLink="/tutorials/{{ currentTutorial.id }} ">
           Edit
         </a>
         </div>

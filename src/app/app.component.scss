@@ -1,68 +1,79 @@
-.menu-main {
-    list-style: none;
-    margin: 20px 0 5px;
-    padding: 25px 0 5px;
-    text-align: center;
-    background: white;
+/* Conteiner */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    font-family: 'Ubuntu Condensed', sans-serif;
 }
 
-.menu-main li {
-    display: inline-block;
+
+/* Header */
+
+.header {
+    width: 100%;
+    padding-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
-.menu-main li:after {
-    content: "|";
-    color: #606060;
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-size: 25px;
+    font-weight: 700;
+    color: #F5F5F5;
+}
+
+
+/* Nav */
+
+.nav {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.nav__link {
     display: inline-block;
     vertical-align: top;
-}
-
-.menu-main li:last-child:after {
-    content: none;
-}
-
-.menu-main a {
-    text-decoration: none;
-    font-family: 'Ubuntu Condensed', sans-serif;
-    letter-spacing: 2px;
+    margin: 0 15px;
     position: relative;
-    padding-bottom: 20px;
-    margin: 0 34px 0 30px;
-    font-size: 17px;
-    text-transform: uppercase;
-    display: inline-block;
-    transition: color .2s;
+    color: #F5F5F5;
+    text-decoration: none;
+    /*Плавное смена цвета*/
+    transition: color 0.1s linear;
 }
 
-.menu-main a,
-.menu-main a:visited {
-    color: #fff
-}
-
-.menu-main a.current,
-.menu-main a:hover {
-    color: #080042
-}
-
-.menu-main a:before,
-.menu-main a:after {
+.nav__link:after {
     content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    opacity: 0;
     position: absolute;
-    height: 4px;
-    top: auto;
-    right: 50%;
-    bottom: 1px;
-    left: 50%;
-    background: #080042;
-    transition: .5s;
-}
-
-.menu-main a:hover:before,
-.menu-main .current:before {
+    top: 100%;
     left: 0;
+    z-index: 1;
+    transition: opacity 0.3s linear;
 }
 
-.menu-main a:hover:after,
-.menu-main .current:after {
-    right: 0;
+.nav__link:hover {
+    color: white;
+}
+
+.nav__link:hover:after,
+.nav__link.active:after {
+    opacity: 1;
+}
+
+.nav__link.active {
+    color: #070067;
 }
