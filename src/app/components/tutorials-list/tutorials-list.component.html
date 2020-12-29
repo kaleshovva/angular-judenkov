@@ -15,7 +15,7 @@
         <h4>List of cars</h4>
         <ul class="list__group">
             <li class="list-group-item" *ngFor="let tutorial of tutorials; let i = index" [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
-                {{ tutorial.data.title }}
+                {{ tutorial.mark }}
             </li>
         </ul>
     </div>
@@ -23,13 +23,13 @@
         <div *ngIf="currentTutorial ">
             <h4>Information about the car</h4>
             <div class="item">
-                <label><strong>Brand:</strong></label> {{ currentTutorial.data.title }}
+                <label><strong>Brand:</strong></label> {{ currentTutorial.mark }}
             </div>
             <div class="item">
-                <label><strong>Model:</strong></label> {{ currentTutorial.data.description }}
+                <label><strong>Model:</strong></label> {{ currentTutorial.model }}
             </div>
             <div class="item">
-                <label><strong>Year:</strong></label> {{ currentTutorial.published ? "Published " : "Pending " }}
+                <label><strong>Year:</strong></label> {{ currentTutorial.year }}
             </div>
 
             <a class="batton" routerLink="/tutorials/{{ currentTutorial.id }} ">

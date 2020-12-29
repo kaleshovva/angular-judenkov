@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
-interface ITutorial {
+interface ICar {
   id: number,
-  data: {
-    title: string,
-    description: string
-  },
-  published?: any
+  model: string,
+  year: number,
+  price: number,
+  mark: string
 }
 
 @Component({
@@ -17,12 +16,14 @@ interface ITutorial {
 })
 export class TutorialsListComponent implements OnInit {
 
-  tutorials: any;
-  currentTutorial: ITutorial = this.setEmptyTutorial();
+  tutorials: [ICar];
+  currentTutorial: ICar = this.setEmptyTutorial();
   currentIndex = -1;
   title = '';
 
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private tutorialService: TutorialService) { 
+    this.tutorials = [{} as ICar];
+  }
 
   ngOnInit(): void {
     this.retrieveTutorials();
@@ -40,14 +41,8 @@ export class TutorialsListComponent implements OnInit {
         });
   }
 
-  private setEmptyTutorial(): ITutorial {
-    return {
-      id: -1,
-      data: {
-        title: '',
-        description: '',
-      }
-    };
+  private setEmptyTutorial(): ICar {
+    return {} as ICar;
   }
 
   refreshList(): void {
