@@ -13,12 +13,12 @@ interface ITutorial {
 
 @Component({
   selector: 'app-tutorial-details',
-  templateUrl: './tutorial-details.component.html',
-  styleUrls: ['./tutorial-details.component.scss']
+  templateUrl: './car-details.component.html',
+  styleUrls: ['./car-details.component.scss']
 })
 
 export class TutorialDetailsComponent implements OnInit {
-  currentTutorial: ITutorial = {
+  currentCar: ITutorial = {
     id: 0,
     data: {
       title: '',
@@ -34,14 +34,14 @@ export class TutorialDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getTutorial(this.route.snapshot.paramMap.get('id'));
+    this.getCar(this.route.snapshot.paramMap.get('id'));
   }
 
-  getTutorial(id: string | null): void {
+  getCar(id: string | null): void {
     this.tutorialService.get(id)
       .subscribe(
         data => {
-          this.currentTutorial = data;
+          this.currentCar = data;
           console.log(data);
         },
         error => {
@@ -51,15 +51,15 @@ export class TutorialDetailsComponent implements OnInit {
 
   updatePublished(status: any): void {
     const data = {
-      title: this.currentTutorial.data.title,
-      description: this.currentTutorial.data.description,
+      title: this.currentCar.data.title,
+      description: this.currentCar.data.description,
       published: status
     };
 
-    this.tutorialService.update(this.currentTutorial.id, data)
+    this.tutorialService.update(this.currentCar.id, data)
       .subscribe(
         response => {
-          this.currentTutorial.published = status;
+          this.currentCar.published = status;
           console.log(response);
         },
         error => {
@@ -67,24 +67,24 @@ export class TutorialDetailsComponent implements OnInit {
         });
   }
 
-  updateTutorial(): void {
-    this.tutorialService.update(this.currentTutorial.id, { 
-      title: this.currentTutorial.data.title, 
-      description: this.currentTutorial.data.description, 
-      published: this.currentTutorial.published 
+  updateCar(): void {
+    this.tutorialService.update(this.currentCar.id, { 
+      title: this.currentCar.data.title, 
+      description: this.currentCar.data.description, 
+      published: this.currentCar.published 
     })
       .subscribe(
         response => {
           console.log(response);
-          this.message = 'The tutorial was updated successfully!';
+          this.message = 'The car was updated successfully!';
         },
         error => {
           console.log(error);
         });
   }
 
-  deleteTutorial(): void {
-    this.tutorialService.delete(this.currentTutorial.id)
+  deleteCar(): void {
+    this.tutorialService.delete(this.currentCar.id)
       .subscribe(
         response => {
           console.log(response);

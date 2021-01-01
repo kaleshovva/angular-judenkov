@@ -1,0 +1,40 @@
+<div class="update">
+    <div *ngIf="currentCar" class="container">
+        <h4>CARS</h4>
+        <form>
+            <div class="group">
+                <label for="title">Brand</label>
+                <input type="text" class="input" id="title" [(ngModel)]="currentCar.data.title" name="title" />
+            </div>
+            <div class="group">
+                <label for="description">Model</label>
+                <input type="text" class="input" id="description" [(ngModel)]="currentCar.data.description" name="description" />
+            </div>
+
+            <div class="group">
+                <label><strong>Status:</strong></label> {{ currentCar.published ? "Published" : "Pending" }}
+            </div>
+        </form>
+
+        <button class="button_update" *ngIf="currentCar.published" (click)="updatePublished(false)">
+      UnPublish
+    </button>
+        <button *ngIf="!currentCar.published" class="button_update" (click)="updatePublished(true)">
+      Publish
+    </button>
+
+        <button class="button_update" (click)="deleteCar()">
+      Delete
+    </button>
+
+        <button type="submit" class="button_update" (click)="updateCar()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentCar">
+        <br />
+        <p>Cannot access this CAR...</p>
+    </div>
+</div>

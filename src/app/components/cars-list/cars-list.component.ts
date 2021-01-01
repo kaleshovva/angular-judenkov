@@ -11,29 +11,29 @@ interface ICar {
 
 @Component({
   selector: 'app-tutorials-list',
-  templateUrl: './tutorials-list.component.html',
-  styleUrls: ['./tutorials-list.component.scss']
+  templateUrl: './cars-list.component.html',
+  styleUrls: ['./cars-list.component.scss']
 })
 export class TutorialsListComponent implements OnInit {
 
-  tutorials: [ICar];
-  currentTutorial: ICar = this.setEmptyTutorial();
+  cars: [ICar];
+  currentCar: ICar = this.setEmptyCar();
   currentIndex = -1;
   title = '';
 
-  constructor(private tutorialService: TutorialService) { 
-    this.tutorials = [{} as ICar];
+  constructor(private carService: TutorialService) { 
+    this.cars = [{} as ICar];
   }
 
   ngOnInit(): void {
-    this.retrieveTutorials();
+    this.retrieveCars();
   }
 
-  retrieveTutorials(): void {
-    this.tutorialService.getAll()
+  retrieveCars(): void {
+    this.carService.getAll()
       .subscribe(
         data => {
-          this.tutorials = data;
+          this.cars = data;
           console.log(data);
         },
         error => {
@@ -41,26 +41,26 @@ export class TutorialsListComponent implements OnInit {
         });
   }
 
-  private setEmptyTutorial(): ICar {
+  private setEmptyCar(): ICar {
     return {} as ICar;
   }
 
   refreshList(): void {
-    this.retrieveTutorials();
-    this.currentTutorial = this.setEmptyTutorial();
+    this.retrieveCars();
+    this.currentCar = this.setEmptyCar();
     this.currentIndex = -1;
   }
 
-  setActiveTutorial(tutorial: any, index: any): void {
-    this.currentTutorial = tutorial;
+  setActiveCar(car: any, index: any): void {
+    this.currentCar = car;
     this.currentIndex = index;
   }
 
-  searchTitle(): void {
-    this.tutorialService.findByTitle(this.title)
+  searchCar(): void {
+    this.carService.findByTitle(this.title)
       .subscribe(
         data => {
-          this.tutorials = data;
+          this.cars = data;
           console.log(data);
         },
         error => {

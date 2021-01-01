@@ -3,30 +3,30 @@ import { TutorialService } from 'src/app/services/tutorial.service';
 
 @Component({
   selector: 'app-add-tutorial',
-  templateUrl: './add-tutorial.component.html',
-  styleUrls: ['./add-tutorial.component.scss']
+  templateUrl: './add-car.component.html',
+  styleUrls: ['./add-car.component.scss']
 })
   
 export class AddTutorialComponent implements OnInit {
-  tutorial = {
+  car = {
     title: '',
     description: '',
     published: false
   };
   submitted = false;
 
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private carService: TutorialService) { }
 
   ngOnInit(): void {
   }
 
-  saveTutorial(): void {
+  saveCar(): void {
     const data = {
-      title: this.tutorial.title,
-      description: this.tutorial.description
+      title: this.car.title,
+      description: this.car.description
     };
 
-    this.tutorialService.create(data)
+    this.carService.create(data)
       .subscribe(
         response => {
           console.log(response);
@@ -37,9 +37,9 @@ export class AddTutorialComponent implements OnInit {
         });
   }
 
-  newTutorial(): void {
+  newCar(): void {
     this.submitted = false;
-    this.tutorial = {
+    this.car = {
       title: '',
       description: '',
       published: false

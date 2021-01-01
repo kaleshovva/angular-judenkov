@@ -4,7 +4,7 @@
         <div class="search__inner">
             <input type="text" class="search__title" placeholder="Search by title" [(ngModel)]="title" />
             <div class="button_search">
-                <button class="button__search" type="button" (click)="searchTitle()">
+                <button class="button__search" type="button" (click)="searchCar()">
                 Search
               </button>
             </div>
@@ -14,30 +14,30 @@
     <div class="list">
         <h4>List of cars</h4>
         <ul class="list__group">
-            <li class="list-group-item" *ngFor="let tutorial of tutorials; let i = index" [class.active]="i == currentIndex" (click)="setActiveTutorial(tutorial, i)">
-                {{ tutorial.mark }}
+            <li class="list-group-item" *ngFor="let car of cars; let i = index" [class.active]="i == currentIndex" (click)="setActiveCar(car, i)">
+                {{ car.mark }}
             </li>
         </ul>
     </div>
     <div class="inf__cars">
-        <div *ngIf="currentTutorial ">
+        <div *ngIf="currentCar ">
             <h4>Information about the car</h4>
             <div class="item">
-                <label><strong>Brand:</strong></label> {{ currentTutorial.mark }}
+                <label><strong>Brand:</strong></label> {{ currentCar.mark }}
             </div>
             <div class="item">
-                <label><strong>Model:</strong></label> {{ currentTutorial.model }}
+                <label><strong>Model:</strong></label> {{ currentCar.model }}
             </div>
             <div class="item">
-                <label><strong>Year:</strong></label> {{ currentTutorial.year }}
+                <label><strong>Year:</strong></label> {{ currentCar.year }}
             </div>
 
-            <a class="link" routerLink="/tutorials/{{ currentTutorial.id }} ">
+            <a class="link" routerLink="/tutorials/{{ currentCar.id }} ">
           Edit
         </a>
         </div>
 
-        <div *ngIf="!currentTutorial ">
+        <div *ngIf="!currentCar ">
             <br />
             <p>Please click on a car...</p>
         </div>
