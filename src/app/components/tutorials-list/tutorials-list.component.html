@@ -32,14 +32,14 @@
                 <label><strong>Year:</strong></label> {{ currentTutorial.year }}
             </div>
 
-            <a class="batton" routerLink="/tutorials/{{ currentTutorial.id }} ">
+            <a class="link" routerLink="/tutorials/{{ currentTutorial.id }} ">
           Edit
         </a>
         </div>
 
         <div *ngIf="!currentTutorial ">
             <br />
-            <p>Please click on a Tutorial...</p>
+            <p>Please click on a car...</p>
         </div>
     </div>
 </div>

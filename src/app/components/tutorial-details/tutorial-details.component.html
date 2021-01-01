@@ -1,33 +1,33 @@
-<div style="width: 400px; margin: auto;">
-    <div *ngIf="currentTutorial" class="edit-form">
-        <h4>Tutorial</h4>
+<div class="update">
+    <div *ngIf="currentTutorial" class="container">
+        <h4>CARS</h4>
         <form>
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" [(ngModel)]="currentTutorial.data.title" name="title" />
+            <div class="group">
+                <label for="title">Brand</label>
+                <input type="text" class="input" id="title" [(ngModel)]="currentTutorial.data.title" name="title" />
             </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" class="form-control" id="description" [(ngModel)]="currentTutorial.data.description" name="description" />
+            <div class="group">
+                <label for="description">Model</label>
+                <input type="text" class="input" id="description" [(ngModel)]="currentTutorial.data.description" name="description" />
             </div>
 
-            <div class="form-group">
+            <div class="group">
                 <label><strong>Status:</strong></label> {{ currentTutorial.published ? "Published" : "Pending" }}
             </div>
         </form>
 
-        <button class="badge badge-primary mr-2" *ngIf="currentTutorial.published" (click)="updatePublished(false)">
+        <button class="button_update" *ngIf="currentTutorial.published" (click)="updatePublished(false)">
       UnPublish
     </button>
-        <button *ngIf="!currentTutorial.published" class="badge badge-primary mr-2" (click)="updatePublished(true)">
+        <button *ngIf="!currentTutorial.published" class="button_update" (click)="updatePublished(true)">
       Publish
     </button>
 
-        <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+        <button class="button_update" (click)="deleteTutorial()">
       Delete
     </button>
 
-        <button type="submit" class="badge badge-success" (click)="updateTutorial()">
+        <button type="submit" class="button_update" (click)="updateTutorial()">
       Update
     </button>
         <p>{{ message }}</p>
@@ -35,6 +35,6 @@
 
     <div *ngIf="!currentTutorial">
         <br />
-        <p>Cannot access this Tutorial...</p>
+        <p>Cannot access this CAR...</p>
     </div>
 </div>
