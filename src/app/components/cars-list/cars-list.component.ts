@@ -45,12 +45,6 @@ export class TutorialsListComponent implements OnInit {
         });
   }
 
-  refreshList(): void {
-    this.retrieveCars();
-    this.currentCar = TutorialsListComponent.setEmptyCar();
-    this.currentIndex = -1;
-  }
-
   setActiveCar(car: any, index: any): void {
     this.currentCar = car;
     this.currentIndex = index;
@@ -63,5 +57,9 @@ export class TutorialsListComponent implements OnInit {
       this.currentCar = TutorialsListComponent.setEmptyCar();
       this.currentIndex = -1;
     }, err => console.log(err));
+    if (this.cars.length === 0) {
+      alert('No cars were found!');
+      this.retrieveCars();
+    }
   }
 }
