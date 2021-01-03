@@ -3,21 +3,25 @@
         <h4>CARS</h4>
         <form>
             <div class="group">
-                <label for="title">Brand</label>
-                <input type="text" class="input" id="title" [(ngModel)]="currentCar.data.title" name="title" />
+                <label for="mark">Mark</label>
+                <input type="text" class="input" id="mark" [(ngModel)]="currentCar.mark" name="mark" />
             </div>
+
             <div class="group">
-                <label for="description">Model</label>
-                <input type="text" class="input" id="description" [(ngModel)]="currentCar.data.description" name="description" />
+                <label for="model">Model</label>
+                <input type="text" class="input" id="model" [(ngModel)]="currentCar.model" name="model" />
+            </div>
+
+            <div class="group">
+                <label for="year">Year</label>
+                <input type="text" class="input" id="year" [(ngModel)]="currentCar.year" name="year" />
+            </div>
+
+            <div class="group">
+                <label for="price">Price</label>
+                <input type="text" class="input" id="price" [(ngModel)]="currentCar.price" name="price" />
             </div>
         </form>
-
-        <button class="button_update" *ngIf="currentCar.published" (click)="updatePublished(false)">
-      UnPublish
-    </button>
-        <button *ngIf="!currentCar.published" class="button_update" (click)="updatePublished(true)">
-      Publish
-    </button>
 
         <button class="button_update" (click)="deleteCar()">
       Delete
@@ -31,6 +35,6 @@
 
     <div *ngIf="!currentCar.id">
         <br />
-        <p class="group">Cannot access this CAR...</p>
+        <p>Cannot access this CAR...</p>
     </div>
 </div>

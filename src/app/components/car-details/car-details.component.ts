@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-interface ITutorial {
-  id: number,
-  data: {
-    title: string,
-    description: string
-  },
-  published?: any
+interface ICar {
+  id?: number,
+  mark: string,
+  model: string,
+  year: number,
+  price: number
 }
 
 @Component({
@@ -18,7 +17,7 @@ interface ITutorial {
 })
 
 export class TutorialDetailsComponent implements OnInit {
-  currentCar: ITutorial = {} as ITutorial;
+  currentCar: ICar = {} as ICar;
   message = '';
 
   constructor(
@@ -45,15 +44,13 @@ export class TutorialDetailsComponent implements OnInit {
 
   updatePublished(status: any): void {
     const data = {
-      title: this.currentCar.data.title,
-      description: this.currentCar.data.description,
-      published: status
+      mark: this.currentCar.mark,
+      model: this.currentCar.model,
     };
 
     this.tutorialService.update(this.currentCar.id, data)
       .subscribe(
         response => {
-          this.currentCar.published = status;
           console.log(response);
         },
         error => {
@@ -63,9 +60,10 @@ export class TutorialDetailsComponent implements OnInit {
 
   updateCar(): void {
     this.tutorialService.update(this.currentCar.id, { 
-      title: this.currentCar.data.title, 
-      description: this.currentCar.data.description, 
-      published: this.currentCar.published 
+      mark: this.currentCar.mark, 
+      model: this.currentCar.model,
+      year: this.currentCar.year,
+      price: this.currentCar.price
     })
       .subscribe(
         response => {

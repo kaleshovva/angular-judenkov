@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8000/api/bmw_cars';
+const baseUrl = 'http://localhost:8000/api/bmw_site';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +24,7 @@ export class TutorialService {
     return this.http.post(baseUrl, data);
   }
 
-  update(id: any, data: { title: any; description: any; published: any; } | null): Observable<any> {
+  update(id: any, data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 

@@ -15,7 +15,7 @@
         <h4>List of cars</h4>
         <ul class="list__group">
             <li class="list-group-item" *ngFor="let car of cars; let i = index" [class.active]="i == currentIndex" (click)="setActiveCar(car, i)">
-                {{ car.mark }}
+                {{ car.mark + " " + car.model}}
             </li>
         </ul>
     </div>
