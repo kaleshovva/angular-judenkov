@@ -18,13 +18,7 @@ interface ITutorial {
 })
 
 export class TutorialDetailsComponent implements OnInit {
-  currentCar: ITutorial = {
-    id: 0,
-    data: {
-      title: '',
-      description: '',
-    }
-  };
+  currentCar: ITutorial = {} as ITutorial;
   message = '';
 
   constructor(

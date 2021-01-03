@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
+interface ICar {
+  id?: number,
+  model: string,
+  year: number,
+  price: number,
+  mark: string
+}
+
 @Component({
   selector: 'app-add-tutorial',
   templateUrl: './add-car.component.html',
@@ -8,11 +16,7 @@ import { TutorialService } from 'src/app/services/tutorial.service';
 })
   
 export class AddTutorialComponent implements OnInit {
-  car = {
-    title: '',
-    description: '',
-    published: false
-  };
+  car: ICar = this.setEmptyCar();
   submitted = false;
 
   constructor(private carService: TutorialService) { }
@@ -21,12 +25,7 @@ export class AddTutorialComponent implements OnInit {
   }
 
   saveCar(): void {
-    const data = {
-      title: this.car.title,
-      description: this.car.description
-    };
-
-    this.carService.create(data)
+    this.carService.create(this.car)
       .subscribe(
         response => {
           console.log(response);
@@ -39,11 +38,15 @@ export class AddTutorialComponent implements OnInit {
 
   newCar(): void {
     this.submitted = false;
-    this.car = {
-      title: '',
-      description: '',
-      published: false
-    };
+    this.car = this.setEmptyCar();
   }
 
+  setEmptyCar(): ICar {
+    return {
+      mark: '',
+      model: '',
+      year: 0,
+      price: 0
+    };
+  }
 }

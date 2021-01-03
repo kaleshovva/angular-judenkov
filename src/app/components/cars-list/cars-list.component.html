@@ -20,7 +20,7 @@
         </ul>
     </div>
     <div class="inf__cars">
-        <div *ngIf="currentCar ">
+        <div *ngIf="currentCar.id">
             <h4>Information about the car</h4>
             <div class="item">
                 <label><strong>Brand:</strong></label> {{ currentCar.mark }}
@@ -40,7 +40,7 @@
         </a>
         </div>
 
-        <div *ngIf="!currentCar ">
+        <div *ngIf="!currentCar.id">
             <br />
             <p>Please click on a car...</p>
         </div>

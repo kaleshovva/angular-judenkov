@@ -19,7 +19,8 @@ export class TutorialService {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
-  create(data: { title: string; description: string; }): Observable<any> {
+  create(data: { mark: string; model: string; year: number; price: number }): Observable<any> {
+    console.log(data)
     return this.http.post(baseUrl, data);
   }
 

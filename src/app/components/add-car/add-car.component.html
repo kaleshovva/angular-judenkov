@@ -2,13 +2,23 @@
     <div class="container">
         <div *ngIf="!submitted">
             <div class="group">
-                <label class="label" for="title">Brand</label>
-                <input class="input" type="text" id="title" required [(ngModel)]="car.title" name="title" />
+                <label class="label" for="mark">Mark</label>
+                <input class="input" type="text" id="mark" required [(ngModel)]="car.mark" name="mark" />
             </div>
 
             <div class="group">
-                <label class="label" for="description">Model</label>
-                <input class="input" id="description" required [(ngModel)]="car.description" name="description" />
+                <label class="label" for="model">Model</label>
+                <input class="input" type="text" id="model" required [(ngModel)]="car.model" name="model" />
+            </div>
+
+            <div class="group">
+                <label class="label" for="year">Year</label>
+                <input class="input" type="text" id="year" required [(ngModel)]="car.year" name="year" />
+            </div>
+
+            <div class="group">
+                <label class="label" for="price">Price</label>
+                <input class="input" id="price" required [(ngModel)]="car.price" name="price" />
             </div>
 
             <button (click)="saveCar()" class="button_success">Submit</button>
