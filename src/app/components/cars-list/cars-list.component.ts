@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
 interface ICar {
-  id: number,
-  model: string,
-  year: number,
-  price: number,
-  mark: string
+  id: number;
+  model: string;
+  year: number;
+  price: number;
+  mark: string;
 }
 
 @Component({
@@ -16,13 +16,17 @@ interface ICar {
 })
 export class TutorialsListComponent implements OnInit {
 
-  cars: [ICar];
-  currentCar: ICar = this.setEmptyCar();
-  currentIndex = -1;
-  title = '';
+  constructor(private carService: TutorialService) {
+    this.cars = [TutorialsListComponent.setEmptyCar()];
+  }
 
-  constructor(private carService: TutorialService) { 
-    this.cars = [{} as ICar];
+  cars: Array<ICar>;
+  currentCar: ICar = TutorialsListComponent.setEmptyCar();
+  currentIndex = -1;
+  searchModel = '';
+
+  private static setEmptyCar(): ICar {
+    return {} as ICar;
   }
 
   ngOnInit(): void {
@@ -41,13 +45,9 @@ export class TutorialsListComponent implements OnInit {
         });
   }
 
-  private setEmptyCar(): ICar {
-    return {} as ICar;
-  }
-
   refreshList(): void {
     this.retrieveCars();
-    this.currentCar = this.setEmptyCar();
+    this.currentCar = TutorialsListComponent.setEmptyCar();
     this.currentIndex = -1;
   }
 
@@ -57,14 +57,11 @@ export class TutorialsListComponent implements OnInit {
   }
 
   searchCar(): void {
-    this.carService.findByTitle(this.title)
-      .subscribe(
-        data => {
-          this.cars = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+    this.carService.getAll().subscribe(cars => {
+      this.cars = cars;
+      this.cars = this.carService.findByTitle(this.searchModel, this.cars);
+      this.currentCar = TutorialsListComponent.setEmptyCar();
+      this.currentIndex = -1;
+    }, err => console.log(err));
   }
 }

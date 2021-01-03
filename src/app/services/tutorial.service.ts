@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 const baseUrl = 'http://localhost:8000/api/bmw_site';
 
@@ -9,7 +9,8 @@ const baseUrl = 'http://localhost:8000/api/bmw_site';
 })
 export class TutorialService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
@@ -20,7 +21,7 @@ export class TutorialService {
   }
 
   create(data: { mark: string; model: string; year: number; price: number }): Observable<any> {
-    console.log(data)
+    console.log(data);
     return this.http.post(baseUrl, data);
   }
 
@@ -36,7 +37,7 @@ export class TutorialService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title: string): Observable<any> {
-    return this.http.get(`${baseUrl}?title=${title}`);
+  findByTitle(model: string, cars: any): any {
+    return cars.filter((car: any) => car.model.toLowerCase().includes(model.toLocaleLowerCase()));
   }
 }

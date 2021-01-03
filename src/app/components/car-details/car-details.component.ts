@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { TutorialService } from 'src/app/services/tutorial.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {TutorialService} from 'src/app/services/tutorial.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 interface ICar {
-  id?: number,
-  mark: string,
-  model: string,
-  year: number,
-  price: number
+  id?: number;
+  mark: string;
+  model: string;
+  year: number;
+  price: number;
 }
 
 @Component({
@@ -23,7 +23,8 @@ export class TutorialDetailsComponent implements OnInit {
   constructor(
     private tutorialService: TutorialService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router) {
+  }
 
   ngOnInit(): void {
     this.message = '';
@@ -42,25 +43,9 @@ export class TutorialDetailsComponent implements OnInit {
         });
   }
 
-  updatePublished(status: any): void {
-    const data = {
-      mark: this.currentCar.mark,
-      model: this.currentCar.model,
-    };
-
-    this.tutorialService.update(this.currentCar.id, data)
-      .subscribe(
-        response => {
-          console.log(response);
-        },
-        error => {
-          console.log(error);
-        });
-  }
-
   updateCar(): void {
-    this.tutorialService.update(this.currentCar.id, { 
-      mark: this.currentCar.mark, 
+    this.tutorialService.update(this.currentCar.id, {
+      mark: this.currentCar.mark,
       model: this.currentCar.model,
       year: this.currentCar.year,
       price: this.currentCar.price
@@ -80,7 +65,7 @@ export class TutorialDetailsComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
-          this.router.navigate(['/tutorials']);
+          this.router.navigate(['/cars']);
         },
         error => {
           console.log(error);

@@ -1,8 +1,8 @@
 /* Conteiner */
 
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 h4 {
@@ -19,17 +19,18 @@ h4 {
     font-size: 20px;
     font-family: 'Ubuntu Condensed', sans-serif;
     text-transform: uppercase;
+  margin-left: 0.5em;
 }
 
 .search__inner {
     padding-top: 90px;
     display: flex;
-    justify-content: last baseline;
+    justify-content: left;
 }
 
 .list,
 .inf__cars {
-    margin: 30px 0px 5px 0px;
+    margin: 30px 0 5px 0;
     text-align: left;
     float: left;
 }

@@ -5,9 +5,9 @@ import { TutorialDetailsComponent } from './components/car-details/car-details.c
 import { AddTutorialComponent } from './components/add-car/add-car.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
-  { path: 'tutorials', component: TutorialsListComponent },
-  { path: 'tutorials/:id', component: TutorialDetailsComponent },
+  { path: '', redirectTo: 'cars', pathMatch: 'full' },
+  { path: 'cars', component: TutorialsListComponent },
+  { path: 'cars/:id', component: TutorialDetailsComponent },
   { path: 'add', component: AddTutorialComponent }
 ];
 
