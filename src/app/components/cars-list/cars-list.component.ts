@@ -17,13 +17,10 @@ interface ICar {
 })
 export class TutorialsListComponent implements OnInit {
 
-  constructor(private carService: TutorialService,
-    private route: ActivatedRoute,
-    private router: Router) {
+  constructor(private carService: TutorialService) {
     this.cars = [TutorialsListComponent.setEmptyCar()];
   }
   
-
   cars: Array<ICar>;
   currentCar: ICar = TutorialsListComponent.setEmptyCar();
   currentIndex = -1;
@@ -52,22 +49,6 @@ export class TutorialsListComponent implements OnInit {
   setActiveCar(car: any, index: any): void {
     this.currentCar = car;
     this.currentIndex = index;
-  }
-
-  buyCar(): void {
-    alert('You bought a car!');
-  }
-
-  deleteCar(): void {
-    this.carService.delete(this.currentCar.id)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.router.navigate(['/cars']);
-        },
-        error => {
-          console.log(error);
-        });
   }
 
   searchCar(): void {

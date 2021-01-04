@@ -66,6 +66,7 @@ export class TutorialDetailsComponent implements OnInit {
         response => {
           console.log(response);
           this.router.navigate(['/cars']);
+          alert("You bought a car!")
         },
         error => {
           console.log(error);
