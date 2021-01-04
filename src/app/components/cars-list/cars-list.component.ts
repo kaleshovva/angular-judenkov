@@ -50,6 +50,10 @@ export class TutorialsListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  buyCar(): void {
+    alert('You bought a car!');
+  }
+
   searchCar(): void {
     this.carService.getAll().subscribe(cars => {
       this.cars = cars;
