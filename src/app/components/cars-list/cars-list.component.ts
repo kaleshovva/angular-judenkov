@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorialService } from 'src/app/services/tutorial.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 interface ICar {
   id: number;
@@ -16,9 +17,12 @@ interface ICar {
 })
 export class TutorialsListComponent implements OnInit {
 
-  constructor(private carService: TutorialService) {
+  constructor(private carService: TutorialService,
+    private route: ActivatedRoute,
+    private router: Router) {
     this.cars = [TutorialsListComponent.setEmptyCar()];
   }
+  
 
   cars: Array<ICar>;
   currentCar: ICar = TutorialsListComponent.setEmptyCar();
@@ -52,6 +56,18 @@ export class TutorialsListComponent implements OnInit {
 
   buyCar(): void {
     alert('You bought a car!');
+  }
+
+  deleteCar(): void {
+    this.carService.delete(this.currentCar.id)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.router.navigate(['/cars']);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   searchCar(): void {
